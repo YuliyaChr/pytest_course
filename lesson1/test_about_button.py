@@ -4,23 +4,26 @@ import time
 
 driver = webdriver.Chrome()
 
-
-def test_incorrect_login():
+def test_about_button():
     driver.get("https://www.saucedemo.com/")
 
     username_field = driver.find_element(By.XPATH, '//input[@data-test="username"]')
-    username_field.send_keys("user")
+    username_field.send_keys("standard_user")
 
     password_field = driver.find_element(By.XPATH, '//input[@data-test="password"]')
-    password_field.send_keys("user")
+    password_field.send_keys("secret_sauce")
 
     login_button = driver.find_element(By.XPATH, '//input[@data-test="login-button"]')
     login_button.click()
 
+    burger_menu = driver.find_element(By.ID, "react-burger-menu-btn")
+    burger_menu.click()
     time.sleep(2)
 
-    error_message = driver.find_element(By.CSS_SELECTOR, ".error-message-container.error").text
-    time.sleep(2)
-    assert error_message == 'Epic sadface: Username and password do not match any user in this service'
+    about_button = driver.find_element(By.CSS_SELECTOR, '#about_sidebar_link')
+    about_button.click()
 
-    driver.quit()
+    time.sleep(2)
+
+    assert driver.current_url == "https://saucelabs.com/"
+
