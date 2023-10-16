@@ -35,9 +35,9 @@ def test_remove_from_cart():
     remove_from_cart = driver.find_element(By.CSS_SELECTOR, '#remove-sauce-labs-backpack')
     remove_from_cart.click()
     time.sleep(2)
-    #
-    # check_the_cart_after = driver.find_element(By.CSS_SELECTOR, 'span.shopping_cart_badge')
-    # assert check_the_cart_after.text == ''
+
+    check_the_cart_after = driver.find_element(By.CSS_SELECTOR, '.removed_cart_item')
+    assert check_the_cart_after.text == ''
 
     driver.quit()
 
