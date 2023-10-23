@@ -1,9 +1,30 @@
-
+import pytest
 from selenium.webdriver.support import expected_conditions as EC
 import time
 from selenium.webdriver.common.by import By
 from locators import START_BUTTON, LOGIN_FIELD, PASSWORD_FIELD, REGISTER_BUTTON, CHECKBOX, SUCCESS_MESSAGE, LOADER
 from data import LOGIN, PASSWORD, MAIN_PAGE
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.chrome.options import Options
+
+@pytest.fixture
+def chrome_options():
+    options = Options()
+    options.add_argument('--start-maximized')
+    return options
+
+
+@pytest.fixture
+def driver(chrome_options):
+    driver = webdriver.Chrome(options=chrome_options)
+    return driver
+
+
+@pytest.fixture
+def wait(driver):
+    wait = WebDriverWait(driver, timeout=10)
+    return wait
 
 
 def test_registration_explicit(driver, wait):
