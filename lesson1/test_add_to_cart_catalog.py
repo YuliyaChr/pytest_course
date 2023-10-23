@@ -3,6 +3,10 @@ from selenium.webdriver.common.by import By
 
 
 driver = webdriver.Chrome()
+driver.maximize_window()
+# driver.maximize_window()
+# driver.implicitly_wait(5)
+
 
 def test_add_to_cart_catalog():
     driver.get("https://www.saucedemo.com/")
@@ -16,7 +20,7 @@ def test_add_to_cart_catalog():
     login_button = driver.find_element(By.XPATH, '//input[@data-test="login-button"]')
     login_button.click()
 
-    text_before =  driver.find_element(By.CSS_SELECTOR, 'a[id="item_4_title_link"] > div[class="inventory_item_name"]').text
+    text_before = driver.find_element(By.ID, 'item_4_title_link').text
 
     button = driver.find_element(By.CSS_SELECTOR, 'button[data-test="add-to-cart-sauce-labs-backpack"]')
     button.click()

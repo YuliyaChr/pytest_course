@@ -1,24 +1,21 @@
 import pytest
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import time
+from locators import LOGIN_BUTTON, USERNAME_FIELD, PASSWORD_FIELD
+from data import LOGIN, PASSWORD, MAIN_PAGE
 
-URL = "https://www.saucedemo.com/"
-LOGIN = "standard_user"
-PASSWORD = "secret_sauce"
 
-driver = webdriver.Chrome()
+def test_add_to_cart(driver):
+    driver.get(MAIN_PAGE)
 
-def test_add_to_cart():
-    driver.get("URL")
+    username_field = driver.find_element(By.ID, USERNAME_FIELD)
+    username_field.send_keys(LOGIN)
 
-    username_field = driver.find_element(By.XPATH, '//input[@data-test="username"]')
-    username_field.send_keys("LOGIN")
+    password_field = driver.find_element(By.ID, PASSWORD_FIELD)
+    password_field.send_keys(PASSWORD)
 
-    password_field = driver.find_element(By.XPATH, '//input[@data-test="password"]')
-    password_field.send_keys("PASSWORD")
-
-    login_button = driver.find_element(By.XPATH, '//input[@data-test="login-button"]')
+    login_button = driver.find_element(By.ID, LOGIN_BUTTON)
     login_button.click()
 
     pick_product = driver.find_element(By.CSS_SELECTOR, '#item_4_title_link > div')
