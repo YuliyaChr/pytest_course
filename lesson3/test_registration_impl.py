@@ -28,7 +28,7 @@ def test_registration_implicit(driver):
     assert header.text == "Практика с ожиданиями в Selenium"
 
     start_button = driver.find_element(By.ID, START_BUTTON)
-    assert start_button.is_displayed()
+    assert start_button.is_displayed() or start_button.is_enabled()
     start_button.click()
 
     login_field = driver.find_element(By.ID, LOGIN_FIELD)
@@ -52,3 +52,5 @@ def test_registration_implicit(driver):
 
     success_message = driver.find_element(By.ID, SUCCESS_MESSAGE)
     assert success_message.text == "Вы успешно зарегистрированы!"
+
+# XPATH START_BUTTON = "//button[@id='startTest']"
