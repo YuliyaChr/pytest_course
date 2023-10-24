@@ -43,8 +43,6 @@ def test_registration_implicit(driver):
     register_button = driver.find_element(By.ID, REGISTER_BUTTON)
     register_button.click()
 
-    time.sleep(1)
-
     loader_button = driver.find_element(By.ID, LOADER)
     print(loader_button.is_displayed())
 
