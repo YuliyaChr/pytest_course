@@ -32,7 +32,7 @@ def test_registration_explicit(driver, wait):
     header = driver.find_element(By.XPATH, '//h1')
     assert header.text == "Практика с ожиданиями в Selenium"
 
-    start_button = wait.until(EC.element_to_be_clickable((By.ID, "startTest")))
+    start_button = wait.until(EC.element_to_be_clickable((By.ID, START_BUTTON)))
     assert start_button.text == 'Начать тестирование'
     start_button.click()
 
