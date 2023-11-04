@@ -1,8 +1,6 @@
-import pytest
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
-from data import LOGIN, PASSWORD, MAIN_PAGE
+from data import MAIN_PAGE
 
 
 def test_logout(driver, fixture_login):
